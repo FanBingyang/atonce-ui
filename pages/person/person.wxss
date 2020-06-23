@@ -1,0 +1,30 @@
+/* pages/person/person.wxss */
+.avatar{
+    background-color:#ada9b3;
+    height: 400rpx;
+    width: auto;
+    position: relative;
+    }
+.avatar image{
+    width: 220rpx;
+    height: 220rpx;
+    border: 10rpx solid rgba(0, 0, 0, 0.1);
+    border-radius:50%;
+    /* 在圆形周围添加边框 */
+}
+.nickname{
+    position: absolute;
+    margin-top: 150rpx;
+}
+.cell{
+    font-size: 14px;
+    background-color: #fff;
+}
+.cell-item{
+    border-bottom:2rpx solid #ddd; 
+    padding:20rpx 30rpx;
+}
+
+page{
+    background-color: rgb(203, 204, 205);
+  }

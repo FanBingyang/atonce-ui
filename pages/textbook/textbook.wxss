@@ -1,0 +1,272 @@
+/* pages/textbook/textbook.wxss */
+/* 顶部导航 */
+.nav {
+  display: flex;
+  /* 子元素换行排列 */
+  flex-wrap: wrap;
+}
+/* 顶部导航分区排列的元素 */
+.nav-item {
+  position: relative;
+  /* 垂直(主轴)居中 */
+  justify-content: center;
+  /* 水平(交叉轴)居中 */
+  align-items: center;
+}
+.top{
+  width: 50%;
+  height: 100rpx;
+  border-bottom: 1rpx solid rgb(223, 222, 222);
+  /*
+      box-sizing:呈现出带有指定宽度和高度的框，并把边框和内边距放入框中。
+      属性border-box：为元素设定的宽度和高度决定了元素的边框盒。
+   */
+  box-sizing: border-box;
+  display: flex;
+  /* 设置垂直排列 */
+  flex-direction: column;
+}
+
+/* 顶部状态文字 */
+.item-text{
+  color: rgb(235, 153, 66);
+}
+/* 文字下方状态条 */
+.item-bor{
+  position: absolute;
+  width: 40%;
+  height: 5rpx;
+  background-color: rgb(235, 153, 66);
+  bottom: 0;
+}
+/* 顶部搜索 */
+.search{
+  /* background-color: yellow; */
+  display: flex;
+  /* 水平(交叉轴)居中 */
+  align-items: center;
+  height: 70rpx;
+  width: 90%;
+  margin: 10rpx 5%;
+  margin-top: 20rpx;
+  background-color: rgb(220, 216, 216);
+  border-radius:0.8em;
+}
+/* 搜索图标 */
+.search image{
+  /* background-color: red; */
+  height: 40rpx;
+  width: 40rpx;
+  padding: 15rpx;
+}
+/* 搜索文本框 */
+.search input{
+  /* border: 2rpx solid red; */
+  height: 90%;
+  width: 90%;
+}
+
+/* 记事本列表 */
+.notepadList{
+  margin-bottom: 80rpx;
+}
+/* 记事本 */
+.notepad{
+  width: 90%;
+  height: 140rpx;
+  margin: 30rpx 5%;
+  /* margin-left: 1%; */
+  border-radius: 0.8rem;
+  background-color: #ededed;
+}
+/* 记事本标题 */
+.notepad-title{
+  margin-left: 25rpx;
+  padding-top: 20rpx;
+  font-size: 15px;
+  width: 80%;
+  /* border: 1rpx solid yellow; */
+}
+/* 记事本时间 */
+.notepad-time{
+  margin-left: 25rpx;
+  margin-top: 15rpx;
+  font-size: 13px;
+  width: 80%;
+  color: rgb(142, 136, 136);
+}
+
+/* 循环的内容，横向弹性排列 */
+.block{
+  display: flex;
+}
+/* 可选框 */
+.checkbox{
+  display: flex;
+  /* 垂直(主轴)居中 */
+  justify-content: center;
+  /* 水平(交叉轴)居中 */
+  align-items: center;
+  padding-left: 30rpx;
+  margin-right: 0;
+}
+/* 空页面填充图 */
+.kong{
+  width: 500rpx;
+  height: 500rpx;
+  margin-top: 200rpx;
+}
+
+
+
+/* 底部操作 */
+.nav-bottom{
+  overflow:hidden;
+  width:100%;
+  position:fixed;
+  bottom: 0;
+  padding-bottom:10rpx;
+  display:flex;
+  justify-content:center;
+  background-color: white;
+}
+.nav-bottom  image{
+  width: 50rpx;
+  height: 50rpx;
+  padding-right: 20rpx;
+}
+/* 底部开始样式 */
+.bottom1 {
+  width: 50%;
+  height: 80rpx;
+  display: flex;
+}
+/* 底部编辑状态样式 */
+.bottom2 {
+  width: 33.333333333333%;
+  height: 80rpx;
+  display: flex;
+}
+
+/* 文件夹样式 */
+.folder{
+  display: flex;
+  width: 90%;
+  height: 110rpx;
+  margin: 20rpx 5%;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+/* 文件夹图表样式 */
+.folder image{
+  width: 80rpx;
+  height: 80rpx;
+  /* background-color: yellow; */
+}
+/* 文件夹名称 */
+.folder-name{
+  width: 60%;
+  position: absolute;
+  margin-left: 100rpx;
+}
+/* 文件夹内容数量 */
+.foler-number{
+  position: absolute;
+  right: 80rpx;
+  font-size: 13px;
+  color: #8f8e8e;
+}
+
+action-sheet-item.warn {
+  color: #e64340;
+}
+
+/* 右箭头 */
+.arr{
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+.arr::after{
+  content:"";
+  width:20rpx;
+  height:20rpx; 
+  border-top:3rpx solid #2c2c2c; 
+  border-right:3rpx solid #2c2c2c; 
+  transform: rotate(45deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* 导航分区 */
+ /* .index-nav{
+    display: flex;
+    flex-wrap: wrap;
+  } */
+  /* .index-nav .nav-item{
+    width: 33.3333333%;
+    height: 200rpx; */
+    /* border-right: 1rpx solid #d2d2d2; */
+    /* border-bottom: 1rpx solid #d2d2d2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 12px;
+    position: relative;
+  }
+
+  .index-nav .nav-item:nth-child(3n)::after{ */
+    /* border-right: 0 none; */
+    /* width: 0;
+  }
+.index-nav image{
+  width: 80rpx;
+  height: 80rpx;
+} */
+/* 主页分区*/
+/* .index-enter{
+  margin-top: 20rpx;
+  display: flex;
+  padding:20rpx 30rpx;
+}
+.index-enter .enter-item{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.index-enter image{
+  width: 320rpx;
+  height: 178rpx;
+} */
+/* 方法一：给page设置背景色，再通过margin隔开，给分区填充白色，
+不适合全局设置 */
+/* page{
+  background-color: rgb(163, 163, 160);
+}
+.index-nav,.index-enter{
+  background-color: white;
+} */

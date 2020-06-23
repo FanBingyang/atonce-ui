@@ -1,0 +1,96 @@
+/* pages/textList.wxss */
+
+/* 记事本列表 */
+.notepadList{
+  margin-bottom: 80rpx;
+}
+/* 记事本 */
+.notepad{
+  width: 90%;
+  height: 140rpx;
+  margin: 30rpx 5%;
+  /* margin-left: 1%; */
+  border-radius: 0.8rem;
+  background-color: #ededed;
+}
+/* 记事本标题 */
+.notepad-title{
+  margin-left: 25rpx;
+  padding-top: 20rpx;
+  font-size: 15px;
+  width: 80%;
+  /* border: 1rpx solid yellow; */
+}
+/* 记事本时间 */
+.notepad-time{
+  margin-left: 25rpx;
+  margin-top: 15rpx;
+  font-size: 13px;
+  width: 80%;
+  color: rgb(142, 136, 136);
+}
+  
+/* 循环的内容，横向弹性排列 */
+.block{
+  display: flex;
+}
+/* 可选框 */
+.checkbox{
+  display: flex;
+  /* 垂直(主轴)居中 */
+  justify-content: center;
+  /* 水平(交叉轴)居中 */
+  align-items: center;
+  padding-left: 30rpx;
+  margin-right: 0;
+}
+
+/* 空页面填充图 */
+.kong{
+  width: 500rpx;
+  height: 500rpx;
+  margin-top: 200rpx;
+}
+
+.nav {
+  display: flex;
+  /* 子元素换行排列 */
+  flex-wrap: wrap;
+}
+/* 顶部导航分区排列的元素 */
+.nav-item {
+  position: relative;
+  /* 垂直(主轴)居中 */
+  justify-content: center;
+  /* 水平(交叉轴)居中 */
+  align-items: center;
+} 
+
+/* 底部操作 */
+.nav-bottom{
+  overflow:hidden;
+  width:100%;
+  position:fixed;
+  bottom: 0;
+  padding-bottom:10rpx;
+  display:flex;
+  justify-content:center;
+  background-color: white;
+}
+.nav-bottom  image{
+  width: 50rpx;
+  height: 50rpx;
+  padding-right: 20rpx;
+}
+/* 底部开始样式 */
+.bottom1 {
+  width: 50%;
+  height: 80rpx;
+  display: flex;
+}
+/* 底部编辑状态样式 */
+.bottom2 {
+  width: 33.333333333333%;
+  height: 80rpx;
+  display: flex;
+}

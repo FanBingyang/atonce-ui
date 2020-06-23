@@ -1,0 +1,14 @@
+<!--pages/person/person.wxml-->
+<view class="avatar midway">
+    <view class="">
+        <image src="{{userInfo.avatarUrl}}"></image>
+    </view>
+    <view class="nickname">{{userInfo.nickName}}</view>
+
+</view>
+<view class=" divider"></view>
+<view class="cell">
+    <navigator class="cell-item arrow">
+        <text>PC端注册 (暂不可用)</text>
+    </navigator>
+</view>

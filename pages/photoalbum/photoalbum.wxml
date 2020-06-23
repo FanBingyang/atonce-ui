@@ -1,0 +1,27 @@
+   <view class='box' hover-class="box-hover" hover-stay-time="500" bindtap='changeImg'>
+        <!-- <image class='img-box' src='/images/{{image}}'></image> -->
+        <view  class='text-box'>相册1</view>
+
+      </view>
+      <view bindtap="chakan">查看相册照片</view>
+      <image src="https://cynosure.online/test.jpg"></image>
+
+      <view class='line'></view>
+
+      <view hidden='{{status}}'>
+        <view class='addPics'>
+          <image class='addpic' src='/img/photoalbum/添加.png' bindtap='goTakePic'></image>
+        </view>
+        <view class="block">
+          <block wx:for="{{src}}">
+          <!-- <block wx:if="{{index % 5 == 0}}">
+           <view></view>
+          </block> -->
+            <navigator url=''>
+              <image class='addpic2' src='{{item}}' data-index="{{index}}" bindtap="previewImage"></image>
+            </navigator>
+            
+          </block>
+        </view>
+      </view>
+

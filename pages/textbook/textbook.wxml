@@ -1,0 +1,120 @@
+<!--pages/textbook/textbook.wxml-->
+<!-- 引入外部的wxs文件 -->
+<wxs src="../../tool.wxs" module="tool" />
+<!--导航分区-->
+<view class="nav">
+  <view class="nav-item top" bindtap="changeStatus" data-status="1">
+    <text class="{{status==1?'item-text':''}}">全部</text>
+    <view class="{{status==1?'item-bor':''}}"></view>
+  </view>
+  <view class="nav-item top" bindtap="changeStatus" data-status="2">
+    <text class="{{status==2?'item-text':''}}">文件夹</text>
+    <view class="{{status==2?'item-bor':''}}"></view>
+  </view>
+</view>
+
+<!-- ***************分割线************ -->
+
+<!-- 导航-全部  区域 -->
+<view  wx:if='{{status==1}}'>
+  <!-- 顶部搜索框 -->
+  <view class="search midway">
+    <image src="/img/搜索.png" lazy-load></image>
+    <input name="searchValue" type="text" confirm-type="search" bindconfirm="search"  placeholder="搜索记事本"></input>
+  </view>
+
+  <!-- 记事本列表 -->
+  <view class="notepadList">
+    <checkbox-group wx:if="{{allNotepadList.length > 0}}" bindchange="checkboxChange">
+      <block wx:for="{{allNotepadList}}" wx:for-item="item"  wx:key="id">
+      <view class="block">
+          <checkbox wx:if="{{editorStatus}}" value="{{item.id}}" class="checkbox" data-index="{{index}}"></checkbox>
+          <view class="notepad" style="{{editorStatus?'margin-left:1%;':''}}" bindtap="gotoText" data-id="{{item.id}}" data-index="{{index}}">
+            <view class="notepad-title ell">{{item.title}}</view>
+            <view class="notepad-time">{{tool.slice(item.creatTime)}}</view>
+          </view>
+        </view>
+      </block>
+    </checkbox-group>
+    <view wx:else class="midway">
+      <image src="/img/kong.png" class="kong" lazy-load></image>
+    </view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view wx:if="{{!editorStatus}}" class="nav nav-bottom">
+    <view class="nav-item bottom1" bindtap="editor">
+      <image src="/img/编辑.png" lazy-load></image>
+      <view>编辑</view>
+    </view>
+    <view class="nav-item bottom1" bindtap="creatText">
+      <image src="/img/新建.png" lazy-load></image>
+      <view>新建</view>
+    </view>
+  </view>
+
+  <!-- 进入编辑状态的操作区 -->
+  <view wx:if="{{editorStatus}}" class="nav nav-bottom">
+    <view class="nav-item bottom2" bindtap="editor">
+      <image src="/img/取消.png" lazy-load></image>
+      <view>取消</view>
+    </view>
+    <view class="nav-item bottom2" bindtap="delete">
+      <image src="/img/删除.png" lazy-load></image>
+      <view>删除</view>
+    </view>
+    <view class="nav-item bottom2">
+      <image src="/img/移动.png" lazy-load></image>
+      <view>移动</view>
+    </view>
+  </view>
+</view>
+
+<!-- *****************分割线************************ -->
+
+<!-- 导航-文件夹  区域 -->
+<view wx:if='{{ status == 2 }}'>
+  <view class="notepadList">
+    <!-- 未分类的文件夹 -->
+    <!-- <view class="folder arr">
+      <image src="/img/未分类.png" lazy-load></image>
+      <text class="folder-name">未分类</text>
+      <text class="foler-number">4</text>
+    </view> -->
+    <!-- 文件夹区 -->
+    <block wx:for="{{allFolderList}}" wx:key="id" wx:for-item="item">
+      <view class="folder arr" bindlongpress="showActions" bindtap="gotoFolder" data-folder="{{item}}" data-index="{{index}}">
+        <image src="{{index != allFolderList.length-1?'/img/文件夹.png':'/img/回收站.png'}}" lazy-load></image>
+        <text class="folder-name  ell">{{item.name}}</text>
+        <text class="foler-number">{{item.number}}</text>
+      </view>
+    </block>
+    <!-- 回收站区 -->
+    <!-- <view class="folder arr" bindtap="gotoFolder">
+      <image src="/img/回收站.png" lazy-load></image>
+      <text class="folder-name">回收站</text>
+      <text class="foler-number">4</text>
+    </view> -->
+    <!-- 底部操作 -->
+    <view wx:if="{{!editorStatus}}" class="nav nav-bottom">
+      <view class="nav-item bottom1" bindtap="creatFolder">
+        <image src="/img/新建文件夹.png" lazy-load></image>
+        <view>新建文件夹</view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 文件夹操作指令 -->
+  <action-sheet hidden="{{!showActionsSheet}}" bindchange="hideActions">
+      <action-sheet-item class="warn" bindtap="deleteFolder">删除</action-sheet-item>
+      <action-sheet-item bindtap="rename">重命名</action-sheet-item>
+      <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+  </action-sheet>
+
+  <!-- 文件夹的模态框 -->
+  <modal id="modal" wx:if="{{showmodalput}}" title="{{modalTitle}}" value="{{modalValue}}" confirm-text="确认" cancel-text="取消" bindconfirm="modalConfirm" bindcancel="modalCancel">
+    <input type="text" placeholder="新建文件夹" value="{{modalValue}}" focus="true" bindblur="modalinput" bindconfirm="modalinput" bindinput="modalinput"></input>
+  </modal>
+
+</view>

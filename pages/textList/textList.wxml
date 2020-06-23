@@ -1,0 +1,47 @@
+<!--pages/textList.wxml-->
+<!-- 引入外部的wxs文件 -->
+<wxs src="../../tool.wxs" module="tool" />
+<view class="notepadList">
+    <checkbox-group wx:if="{{allNotepadList.length > 0}}" bindchange="checkboxChange">
+      <block wx:for="{{allNotepadList}}" wx:key="id"  wx:for-item="item">
+      <view class="block">
+          <checkbox wx:if="{{editorStatus}}" value="{{item.id}}" class="checkbox" data-index="{{item.index}}"></checkbox>
+          <view class="notepad" style="{{editorStatus?'margin-left:1%;':''}}">
+            <view class="notepad-title ell">{{item.title}}</view>
+            <view class="notepad-time">{{tool.slice(item.creatTime)}}</view>
+          </view>
+        </view>
+      </block>
+    </checkbox-group>
+    <view wx:else class="midway">
+      <image src="/img/kong.png" class="kong"></image>
+    </view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view wx:if="{{!editorStatus}}" class="nav nav-bottom">
+    <view class="nav-item bottom1" bindtap="editor">
+      <image src="/img/编辑.png"></image>
+      <view>编辑</view>
+    </view>
+    <view class="nav-item bottom1" bindtap="creatText">
+      <image src="/img/新建.png"></image>
+      <view>新建</view>
+    </view>
+  </view>
+
+  <!-- 进入编辑状态的操作区 -->
+  <view wx:if="{{editorStatus}}" class="nav nav-bottom">
+    <view class="nav-item bottom2" bindtap="editor">
+      <image src="/img/取消.png"></image>
+      <view>取消</view>
+    </view>
+    <view class="nav-item bottom2" bindtap="delete">
+      <image src="/img/删除.png"></image>
+      <view>删除</view>
+    </view>
+    <view class="nav-item bottom2">
+      <image src="/img/移动.png"></image>
+      <view>移动</view>
+    </view>
+  </view>

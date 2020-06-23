@@ -1,0 +1,73 @@
+<!-- 引入外部的wxs文件 -->
+<wxs src="../../tool.wxs" module="tool" />
+<!-- 编辑框 -->
+<view class="text-container" style="height:{{editorHeight}}px;">
+  <input class="container-title" placeholder="输入标题..." value="{{notepad.title}}" bindblur="titleInput" bindinput="titleInput"></input>
+  <view class="container-time">{{tool.sliceHMS(time)}} | {{title}}</view>
+  
+  <editor id="editor" class="ql-container" placeholder="开始输入..." bindstatuschange="onStatusChange" bindready="onEditorReady" show-img-size show-img-toolbar show-img-resize></editor>
+</view>
+<!-- 工具栏 -->
+<view class="toolbar" catchtouchend="format"  style="bottom: {{isIOS ? keyboardHeight : 0}}px">
+  <!-- 字体加粗 -->
+  <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+  <!-- 字体斜体 -->
+  <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+  <!-- 字体下划线 -->
+  <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+  <!-- 插入一、二、三级标题 -->
+  <i class="iconfont icon-format-header-1 {{formats.header === 1 ? 'ql-active' : ''}}" data-name="header" data-value="{{1}}"></i>
+  <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
+  <!-- <i class="iconfont icon-format-header-3 {{formats.header === 3 ? 'ql-active' : ''}}" data-name="header" data-value="{{3}}"></i> -->
+  <!-- 插入字体删除线 -->
+  <i class="iconfont icon-zitishanchuxian {{formats.strike ? 'ql-active' : ''}}" data-name="strike"></i>
+  <!-- 插入分割线 -->
+  <i class="iconfont icon-fengexian" bindtap="insertDivider"></i>
+  <!-- 插入日期 2020/4/25 -->
+  <i class="iconfont icon-date" bindtap="insertDate"></i>
+  <!-- 插入图片 -->
+  <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+
+  <!-- 插入上标 -->
+  <i class="iconfont icon-zitishangbiao {{formats.script == 'super' ? 'ql-active' : ''}}" data-name="script" data-value="super"></i>
+  <!-- 插入下标 -->
+  <i class="iconfont icon-zitixiabiao {{formats.script == 'sub' ? 'ql-active' : ''}}" data-name="script" data-value="sub"></i>
+  <!-- 字体颜色 -->
+  <i class="iconfont icon-text_color {{formats.color === '#fc0000' ? 'ql-active-text_color' : ''}}" data-name="color" data-value="#fc0000"></i>
+  <!-- 字体背景颜色 -->
+  <i class="iconfont icon-fontbgcolor {{formats.backgroundColor === '#00ff00' ? 'ql-active' : ''}}" data-name="backgroundColor" data-value="#00ff00"></i>
+  <!-- 插入任务列表 -->
+  <i class="iconfont icon--checklist {{formats.list === 'check' ? 'ql-active' : ''}}" data-name="list" data-value="check"></i>
+  <!-- 插入有序列表 -->
+  <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+  <!-- 插入无序列表 -->
+  <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+  <!-- 撤销 -->
+  <i class="iconfont icon-undo" bindtap="undo"></i>
+  <!-- 恢复 -->
+  <i class="iconfont icon-redo" bindtap="redo"></i>
+
+  <!-- 段前间距 -->
+  <!-- <i class="iconfont icon-722bianjiqi_duanqianju {{formats.marginTop ? 'ql-active' : ''}}" data-name="marginTop" data-value="20px"></i> -->
+  <!-- 段后间距 -->
+  <!-- <i class="iconfont icon-723bianjiqi_duanhouju {{formats.micon-previewarginBottom ? 'ql-active' : ''}}" data-name="marginBottom" data-value="20px"></i> -->
+  <!-- 行高 -->
+  <!-- <i class="iconfont icon-line-height {{formats.lineHeight ? 'ql-active' : ''}}" data-name="lineHeight" data-value="2"></i> -->
+  <!-- 字符之间的间距 -->
+  <!-- <i class="iconfont icon-Character-Spacing {{formats.letterSpacing ? 'ql-active' : ''}}" data-name="letterSpacing" data-value="2em"></i> -->
+  <!-- 清除当前样式 -->
+  <!-- <i class="iconfont icon-clearedformat" bindtap="removeFormat"></i> -->
+  <!-- 字体样式（未实现） -->
+  <!-- <i class="iconfont icon-font {{formats.fontFamily ? 'ql-active' : ''}}" data-name="fontFamily" data-value="Pacifico"></i> -->
+  <!-- 字体放大 -->
+  <!-- <i class="iconfont icon-fontsize {{formats.fontSize === '24px' ? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i> -->
+  <!-- 清空编辑器 -->
+  <!-- <i class="iconfont icon-shanchu" bindtap="clear"></i> -->
+  <!-- 颠倒左右顺序 -->
+  <!-- <i class="iconfont icon-direction-rtl {{formats.direction === 'rtl' ? 'ql-active' : ''}}" data-name="direction" data-value="rtl"></i> -->
+</view>
+
+<!-- 底部操作 -->
+<view class="bottom">
+  <button type="primary" bindtap="tijiao" style="width:100%;" >提交</button>
+</view>

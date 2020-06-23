@@ -1,0 +1,36 @@
+{
+    "pages": [
+        "pages/login/login",
+        "pages/person/person",
+        "pages/photoalbum/photoalbum",
+        "pages/textbook/textbook",
+        "pages/textList/textList",
+        "pages/text/text"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ada9b3",
+        "navigationBarTitleText": "即刻",
+        "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "selectedColor": "#ef8924",
+        "backgroundColor": "#ada9b3",
+        "list": [
+            {
+                "pagePath": "pages/textbook/textbook",
+                "text": "记事本",
+                "iconPath": "img/tarbar/记事本.png",
+                "selectedIconPath": "img/tarbar/记事本选.png"
+            },
+            {
+                "pagePath": "pages/person/person",
+                "text": "个人中心",
+                "iconPath": "img/tarbar/个人中心.png",
+                "selectedIconPath": "img/tarbar/个人中心选.png"
+            }
+        ]
+    }
+}

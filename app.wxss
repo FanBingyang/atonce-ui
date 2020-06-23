@@ -1,0 +1,91 @@
+/**app.wxss**/
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+/* 白色底色，间隔封装 */
+.bgc{/* 封装起来 */
+  background-color: rgb(244, 244, 244);
+}
+.mt20{
+  margin-top: 20px;
+}
+/* 箭头封装类 */
+.arrow{
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+.arrow::after{
+  content:"";
+  width:15rpx;
+   height:15rpx; 
+   border-top:3rpx solid #ccc; 
+   border-right:3rpx solid #ccc; 
+   transform: rotate(45deg);
+}
+/* 水平垂直居中对齐 */
+.midway{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  /* ---------------------------- 
+功能封装一：白色底色，间隔封装 */
+.bgc{/* 封装起来 */
+  background-color: rgb(244, 244, 244);
+}
+.mt20{
+  margin-top: 20px;
+}
+/* --------------------------- */
+/* 功能封装二：专门用于做间隔的类，设定高度，填充底色 */
+/* 封装间隔类 */
+.divider{
+  height: 20rpx;
+  background-color: rgba(203, 204, 205, 0.881);
+}
+/* ----------------------------- */
+/* 设置分区间隔 */
+/* 方法一：给page设置背景色，再通过margin隔开，给分区填充白色，不适合全局设置 */
+/* page{
+  background-color: rgb(163, 163, 160);
+}
+.index-nav,.index-enter{
+  background-color: white;
+} */
+/* ---------------------- */
+/* 功能封装三：细线边框
+移动端边框问题：右边框普通写法占位置，也容易对不齐，
+解决办法：伪元素+定位 实现 */
+.bdr{
+  position: absolute;
+}
+.bdr::after{/*.index-nav .nav-item::after after伪元素 */
+  /* 1.通过伪元素绘制1像素的右边框 */
+  content: "";
+  width: 1rpx;
+  height: 100%;
+  background-color:#d2d2d2;
+  /* 2.定位，不占位置 */
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* 功能封装4：单行超出宽度变省略号 */
+.ell{
+  /* 先将超出的部分隐藏 */
+  overflow: hidden;
+  /* 设置不换行 */
+  white-space: nowrap;
+  /* 附加省略号 */
+  text-overflow: ellipsis;
+}
